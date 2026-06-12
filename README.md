@@ -73,7 +73,7 @@ TubeMind is a full-stack AI application that lets you **paste any YouTube URL** 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/TubeMind.git
+git clone https://github.com/md-arshaq/TubeMind.git
 cd TubeMind
 ```
 
