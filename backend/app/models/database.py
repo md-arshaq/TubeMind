@@ -31,8 +31,8 @@ class Video(Base):
     summary = Column(Text, nullable=True)
     topics = Column(JSON, nullable=True)  # List of topic strings
     error_message = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None), onupdate=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
 
     # Relationships
     messages = relationship("ChatMessage", back_populates="video", cascade="all, delete-orphan")
@@ -47,7 +47,7 @@ class ChatMessage(Base):
     question = Column(Text, nullable=False)
     answer = Column(Text, nullable=False)
     sources = Column(JSON, nullable=True)  # List of source chunks
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
 
     # Relationships
     video = relationship("Video", back_populates="messages")

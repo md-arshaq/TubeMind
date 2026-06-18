@@ -65,7 +65,7 @@ async def chat_with_video(
 
         # Persist chat message
         message_id = str(uuid.uuid4())
-        now = datetime.now(timezone.utc)
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         chat_message = ChatMessage(
             id=message_id,
             video_id=video_id,
